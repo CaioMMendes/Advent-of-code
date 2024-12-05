@@ -1037,7 +1037,7 @@ console.log(solutionPart1(array1, array2))
 
 function solutionPart2(array1: number[], array2: number[]) {
   let sum = 0
-  let count = {}
+  let count: Record<string, number> = {}
   for (let i = 0; i < array2.length; i++) {
     if (count[array2[i]]) {
       count[array2[i]]++
