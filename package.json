@@ -1,0 +1,16 @@
+{
+  "name": "adventofcode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch 2024/Day2-Red-NosedReports.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "tsx": "^4.19.2"
+  }
+}
