@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch 2024/Day1-HistorianHysteria.ts"
+    "dev": "tsx watch 2024/Day3-MullItOver.ts"
   },
   "keywords": [],
   "author": "",

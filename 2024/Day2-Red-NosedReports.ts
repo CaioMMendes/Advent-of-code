@@ -999,6 +999,15 @@ const string = `[[1 2 4 7 9 8]
 [17 20 23 25 26 29 31]
 [85 86 89 92 94]]`
 
+const testMatrix = [
+  [7, 6, 4, 2, 1],
+  [1, 2, 7, 8, 9],
+  [9, 7, 6, 2, 1],
+  [1, 3, 2, 4, 5],
+  [8, 6, 4, 4, 1],
+  [1, 3, 6, 7, 9],
+]
+
 const stringMatrix = string.replace(/\s/g, ",")
 const matrix = JSON.parse(stringMatrix)
 
@@ -1057,3 +1066,59 @@ function resolve(matrix: number[][]) {
 }
 
 console.log(resolve(matrix)) //631
+
+// Part2
+
+function resolvePart2(matrix: number[][]) {
+  const rows = matrix.length
+
+  let result = 0
+  for (let i = 0; i < rows; i++) {
+    let up: null | boolean = null
+    const element = matrix[i]
+    let error = false
+    if (element.length <= 1) result++
+    for (let j = 1; j < element.length; j++) {
+      const dif1 =
+        element?.[j - 1] === undefined
+          ? undefined
+          : Math.abs(element[j - 1] - element[j])
+      const dif2 =
+        element?.[j + 1] === undefined
+          ? undefined
+          : Math.abs(element[j + 1] - element[j])
+      if (dif1 && dif1 > 3) {
+        error = true
+        break
+      }
+      if (dif2 && dif2 > 3) {
+        error = true
+        break
+      }
+
+      if (element[j] > element[j - 1]) {
+        if (up === false) {
+          error = true
+          break
+        }
+        up = true
+        continue
+      }
+      if (element[j] < element[j - 1]) {
+        if (up === true) {
+          error = true
+          break
+        }
+        up = false
+        continue
+      }
+
+      error = true
+      break
+    }
+    if (error === false) result++
+    console.log(i)
+  }
+
+  return result
+}
